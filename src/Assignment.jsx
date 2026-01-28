@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,11 +6,10 @@ import {
   query,
   onSnapshot,
   orderBy,
-  where,
   getDocs,
   serverTimestamp,
   deleteDoc,
-  doc
+  doc,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "./firebaseConfig";
@@ -22,8 +20,8 @@ import "./Assignment.css";
 export default function Assignment() {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
-  const [userRole, setUserRole] = useState(null);
   const [user, setUser] = useState(null);
+
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -32,24 +30,15 @@ export default function Assignment() {
   const [pdfFile, setPdfFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
+  // 🔐 AUTH
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (u) => {
-      if (!u) {
-        setUser(null);
-        setUserRole(null);
-        return;
-      }
-      setUser(u);
-
-      const q = query(collection(db, "users"), where("email", "==", u.email));
-      const snap = await getDocs(q);
-      if (!snap.empty) {
-        setUserRole(snap.docs[0].data().role);
-      }
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u || null);
     });
     return () => unsub();
   }, []);
 
+  // 📥 FETCH ASSIGNMENTS
   useEffect(() => {
     const q = query(collection(db, "assignments"), orderBy("dueDate", "asc"));
     const unsub = onSnapshot(q, (snap) => {
@@ -58,13 +47,16 @@ export default function Assignment() {
     return () => unsub();
   }, []);
 
+  // ❌ DELETE
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this assignment?")) return;
     await deleteDoc(doc(db, "assignments", id));
   };
+
+  // ➕ ADD
   const handleAddAssignment = async (e) => {
     e.preventDefault();
-    if (!title || !dueDate) return alert("Please fill all fields");
+    if (!title || !dueDate) return alert("Please fill all required fields");
 
     setUploading(true);
     let pdfURL = "";
@@ -85,7 +77,7 @@ export default function Assignment() {
         dueDate,
         link: link || "",
         pdfURL,
-        createdBy: user?.email,
+        createdBy: user?.email || "unknown",
         createdAt: serverTimestamp(),
       });
 
@@ -112,11 +104,11 @@ export default function Assignment() {
       <div className="assignment-section">
         <div className="section-top">
           <h4>All Assignments</h4>
-          {userRole === "teacher" && (
-            <button className="add-btn" onClick={() => setShowForm(true)}>
-              + Add
-            </button>
-          )}
+
+          {/* ✅ EVERYONE CAN ADD */}
+          <button className="add-btn" onClick={() => setShowForm(true)}>
+            + Add
+          </button>
         </div>
 
         {assignments.length ? (
@@ -146,14 +138,12 @@ export default function Assignment() {
                 )}
               </div>
 
-              {/* DELETE ICON */}
-              {userRole === "teacher" && (
-                <Trash2
-                  size={18}
-                  style={{ cursor: "pointer", color: "#dc2626" }}
-                  onClick={() => handleDelete(a.id)}
-                />
-              )}
+              {/* ✅ EVERYONE CAN DELETE */}
+              <Trash2
+                size={18}
+                style={{ cursor: "pointer", color: "#dc2626" }}
+                onClick={() => handleDelete(a.id)}
+              />
             </div>
           ))
         ) : (
@@ -167,10 +157,12 @@ export default function Assignment() {
           <Home size={20} />
           <span>Dashboard</span>
         </div>
+
         <div className="active-tab">
           <BookOpen size={20} />
           <span>Assignment</span>
         </div>
+
         <div onClick={() => navigate("/classroom")}>
           <Users size={20} />
           <span>Classroom</span>
@@ -205,6 +197,7 @@ export default function Assignment() {
 
             <div className="attachments">
               <h4>Attachments</h4>
+
               <div className="add-link">
                 🔗
                 <input
