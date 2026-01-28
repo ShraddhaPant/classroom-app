@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap');
+
+.frunt-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #FFFCF2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lexend', sans-serif;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.frunt-content {
+  text-align: center;
+  max-width: 90%;
+}
+
+.welcome-text {
+  color: #124304;
+  font-size: clamp(16px, 2vw, 24px);
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.teacher-btn,
+.student-btn {
+  border-radius: 25px;
+  padding: 0.8rem 1.2rem;
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0.6rem auto;
+  width: min(70%, 250px);
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+
+.teacher-btn {
+  background-color: #CCEBE3;
+  color: #006312;
+  border: 2px solid #9ACABE;
+}
+
+.teacher-btn:hover {
+  background-color: #bde0d6;
+}
+
+.student-btn {
+  background-color: #CBE9FF;
+  color: #003971;
+  border: 2px solid #9BD5FF;
+}
+
+.student-btn:hover {
+  background-color: #b5dcff;
+}
+
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: clamp(14px, 4vw, 20px);
+  }
+
+  .teacher-btn,
+  .student-btn {
+    width: 80%;
+    padding: 0.7rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text {
+    font-size: 14px;
+  }
+
+  .teacher-btn,
+  .student-btn {
+    width: 90%;
+    padding: 0.6rem 0.9rem;
+    font-size: 14px;
+  }
+}

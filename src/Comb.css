@@ -1,0 +1,85 @@
+.comb-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #fdfcf7; /* light cream background */
+  min-height: 100vh;
+}
+
+.comb-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+}
+
+.comb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Class Card */
+.class-card {
+  background: #cdeee9; /* light greenish-blue */
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.class-card:hover {
+  transform: scale(1.02);
+}
+
+.class-name {
+  color: #1b5e20;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Join Button */
+.join-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-weight: bold;
+  background: #c8e1fb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.join-btn:hover {
+  background: #a7d0f7;
+}
+
+.comb-container {
+  padding: 20px;
+  background-color: #fff8f0;
+  min-height: 100vh;
+  overflow-y: auto; /* ✅ allows scrolling */
+}
+
+.comb-list {
+  margin-top: 20px;
+}
+
+.class-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #d1f5f0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.class-card:hover {
+  background-color: #bdf0ea;
+}
+

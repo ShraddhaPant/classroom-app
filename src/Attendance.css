@@ -1,0 +1,246 @@
+.attendance-page {
+  background-color: #fffcf2;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px; 
+}
+
+.attendance-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 20px;
+  background-color: #fffcf2;
+  border-bottom: 2px solid #e0d8c3;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.attendance-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-sheet-btn {
+  position: absolute;
+  right: 20px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-sheet-btn:hover {
+  background-color: #005f8a;
+}
+
+/* ===== TABS ===== */
+.attendance-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 0;
+}
+
+.attendance-tabs span {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.attendance-tabs .active {
+  color: #14532d;
+  background: #e6f4ea;
+}
+
+/* ===== MAIN SECTION ===== */
+.attendance-main {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+/* ===== MONTH LIST ===== */
+.dates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.date-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.date-card:hover {
+  background: #f5f9ff;
+}
+
+/* ===== POPUP OVERLAY (same as Assignment) ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ===== POPUP CARD ===== */
+.add-sheet-popup {
+  background: #fffcf2;
+  border-radius: 16px;
+  padding: 22px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  animation: fadeIn 0.26s ease;
+}
+
+/* popup animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== FORM HEADER ===== */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* close (X) */
+.close-btn {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== FORM CONTENT ===== */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.add-form select,
+.add-form input {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background: #ccebe3;
+}
+
+.add-form select:focus,
+.add-form input:focus {
+  border-color: #14532d;
+  outline: none;
+}
+
+/* ===== SAVE BUTTON ===== */
+.upload-btn {
+  background-color: #d7e7ff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.15s;
+}
+
+.upload-btn:hover {
+  background-color: #c2dcff;
+}
+
+/* ===== BOTTOM NAVBAR (Assignment style) ===== */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+  padding: 8px 0;
+  background-color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.bottom-nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.2s;
+}
+
+.bottom-nav div:hover {
+  color: #14532d;
+}
+
+.bottom-nav .active-nav {
+  color: #14532d;
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 420px) {
+  .add-sheet-popup {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}

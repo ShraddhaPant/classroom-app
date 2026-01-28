@@ -1,0 +1,55 @@
+/* src/pages/Sea.css */
+
+.sea-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fffdf5; /* same cream bg as figma */
+  height: 100vh;
+  padding-top: 2rem;
+}
+
+.sea-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  width: 90%;
+  text-align: center;
+}
+
+.sea-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 350px;
+}
+
+.sea-input {
+  margin: 0.4rem 0;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background: #d6f3f0; /* light aqua from figma */
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.sea-btn {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: #cce6ff; /* light blue button */
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sea-btn:hover {
+  background: #add6ff;
+}

@@ -1,0 +1,87 @@
+.tea-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #FFFCF2;
+  padding: 2rem;
+  font-family: 'Lexend', sans-serif;
+}
+
+/* Title */
+.tea-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #124304;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Classroom Grid */
+.classroom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Classroom Card */
+.class-card {
+  background: #CCEBE3;
+  border-left: 10px solid #639F8F;
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.class-subject {
+  color: #124304;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.class-professor,
+.class-code {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.2rem;
+}
+
+/* Message if no classes */
+.no-classes {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  grid-column: span 2;
+}
+
+/* Create Button */
+.btn-container {
+  margin-top: 2rem;
+}
+
+.create-btn {
+  padding: 0.9rem 1.6rem;
+  background: #CBE9FF;
+  color: #124304;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.create-btn:hover {
+  background: #b6dbff;
+}
+

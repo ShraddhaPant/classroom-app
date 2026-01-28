@@ -1,0 +1,230 @@
+
+.classroom-page {
+  background-color: #fffcf2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.classroom-header {
+  text-align: center;
+  background-color: #fffcf2;
+  padding-top: 20px;
+}
+
+.classroom-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.classroom-line {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #bcbcbc;
+  margin: 0;
+}
+
+.classroom-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.classroom-tabs span {
+  cursor: pointer;
+  color: #444;
+  font-weight: 500;
+}
+
+.classroom-tabs .active {
+  color: #14532d;
+  border-bottom: 2px solid #14532d;
+  padding-bottom: 4px;
+}
+
+.tabs-line {
+  border: none;
+  border-top: 1px solid #c0c0c0;
+  margin: 0;
+}
+
+.classroom-main {
+  flex-grow: 1;
+  padding: 20px 25px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.member-card {
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.profile-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.member-info {
+  flex-grow: 1;
+}
+
+.member-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+.member-role {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+}
+
+.member-options {
+  font-size: 22px;
+  color: #333;
+  cursor: pointer;
+}
+
+.classroom-bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+  padding: 8px 0;
+  background-color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  position: sticky;
+  bottom: 0;
+}
+
+.classroom-bottom-nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.2s;
+}
+
+.classroom-bottom-nav div:hover,
+.classroom-bottom-nav .active-nav {
+  color: #14532d;
+}
+
+/* ===== ADD MEMBER BUTTON ===== */
+.add-member-btn {
+  margin-top: 10px;
+  background-color: #14532d;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-member-btn:hover {
+  background-color: #0f3f22;
+}
+
+/* ===== POPUP OVERLAY ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ===== POPUP BOX ===== */
+.popup {
+  background: #fff;
+  padding: 20px;
+  width: 280px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ===== POPUP INPUTS ===== */
+.popup input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.popup input:focus {
+  border-color: #14532d;
+}
+
+/* ===== POPUP BUTTONS ===== */
+.popup button {
+  padding: 8px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.popup button:first-of-type {
+  background-color: #14532d;
+  color: #fff;
+}
+
+.popup button:last-of-type {
+  background-color: #eee;
+  color: #333;
+}
+
+.delete-icon {
+  color: #b91c1c;
+  cursor: pointer;
+  margin-left: auto;
+  transition: 0.2s;
+}
+
+.delete-icon:hover {
+  color: #7f1d1d;
+  transform: scale(1.1);
+}

@@ -1,0 +1,121 @@
+/* Container */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fdfaf3; /* same cream bg */
+  padding: 1rem;
+}
+
+/* Form Box */
+.register-form {
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: 600;
+}
+
+/* Inputs */
+.register-form label {
+  margin-top: 0.8rem;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 500;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 100%;
+  margin-top: 0.4rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  background: #cbeee6;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  padding: clamp(0.65rem, 1vw, 0.8rem);
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.checkbox-container a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.checkbox-container a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.register-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  padding: clamp(0.7rem, 1vw, 0.9rem);
+}
+
+.register-btn:hover {
+  background: #2563eb;
+}
+
+/* Sign In link */
+.signin-text {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signin-text a {
+  color: #3b82f6;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-form {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .register-btn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .register-form input {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+  }
+}

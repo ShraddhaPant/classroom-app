@@ -1,0 +1,166 @@
+/* ===== PAGE LAYOUT ===== */
+.links-page {
+  background-color: #fffcf2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+.links-topbar {
+  text-align: center;
+  background-color: #fffcf2;
+  padding-top: 20px;
+}
+
+.top-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.big-line {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #bcbcbc;
+  margin: 0;
+}
+
+/* ===== TABS ===== */
+.links-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 12px 0 8px 0;
+  font-size: 14px;
+}
+
+.links-tabs span {
+  cursor: pointer;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.links-tabs .active {
+  color: #14532d;
+  font-weight: 600;
+}
+
+.tabs-line {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #c0c0c0;
+  margin: 0;
+}
+
+/* ===== MAIN ===== */
+.links-main {
+  text-align: center;
+  padding: 20px 15px;
+  flex-grow: 1;
+}
+
+.links-section-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* ===== ADD LINK BUTTON ===== */
+.add-link-btn {
+  background-color: #d7e7ff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  margin: 10px auto 20px auto;
+  display: block;
+}
+
+/* ===== LINK CARDS ===== */
+.links-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.link-card {
+  width: 80%;
+  background-color: #ccefe4;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: left;
+}
+
+.link-card h4 {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+.link-card a {
+  color: #14532d;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== EMPTY TEXT ===== */
+.empty-text {
+  color: #777;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+/* ===== BOTTOM NAVBAR ===== */
+.links-bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+  padding: 8px 0;
+  background-color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  position: sticky;
+  bottom: 0;
+}
+
+.links-bottom-nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.2s;
+}
+
+.links-bottom-nav div:hover {
+  color: #14532d;
+}
+
+.link-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+
+.delete-icon:hover {
+  color: #c0392b;
+  transform: scale(1.1);
+}

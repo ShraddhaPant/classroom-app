@@ -1,0 +1,129 @@
+/* === Container === */
+.codecreate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fffcf2;
+  font-family: 'Lexend', sans-serif;
+  padding: 1rem;
+}
+
+/* === Card === */
+.codecreate-card {
+  background: #fffcf2;
+  width: 100%;
+  max-width: 480px; /* slightly larger for tablets */
+  padding: clamp(1.2rem, 4vw, 3rem);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 0;
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  cursor: pointer;
+}
+
+.codecreate-card h2 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.codecreate-card p {
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* === Input fields === */
+.code-input {
+  display: block;
+  width: 100%;
+  padding: clamp(0.8rem, 2.2vw, 1.2rem);
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #d5f4f0;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #000;
+}
+
+.code-input::placeholder {
+  color: #555;
+  font-weight: 400;
+}
+
+/* === Main Create Button === */
+.create-btn {
+  width: 100%;
+  background: #cbe9ff;
+  color: #000;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: clamp(0.9rem, 2.8vw, 1.4rem);
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.create-btn:hover {
+  background: #b6dbff;
+  transform: translateY(-2px);
+}
+
+/* === Share buttons row === */
+.share-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 0.7rem;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
+
+.share-buttons button {
+  flex: 1;
+  padding: clamp(0.6rem, 2.5vw, 1rem);
+  border: none;
+  border-radius: 8px;
+  background: #e9f7ff;
+  cursor: pointer;
+  font-size: clamp(0.85rem, 2.2vw, 1.1rem);
+  font-weight: 600;
+  min-width: 100px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.share-buttons button:hover {
+  background: #d3edff;
+  transform: translateY(-2px);
+}
+
+/* === Extra small devices (≤ 360px) === */
+@media (max-width: 360px) {
+  .codecreate-card {
+    padding: 1rem;
+  }
+  .share-buttons {
+    flex-direction: column;
+  }
+  .share-buttons button {
+    width: 100%;
+  }
+}
