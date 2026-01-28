@@ -1,7 +1,7 @@
 // src/pages/Tea.jsx
 import React, { useEffect, useState } from "react";
 import { db } from "./firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore"; // ✅ added deleteDoc, doc
 import { useNavigate } from "react-router-dom";
 import "./Tea.css";
 
@@ -25,6 +25,17 @@ const Tea = () => {
     fetchClassrooms();
   }, []);
 
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this classroom?")) {
+      try {
+        await deleteDoc(doc(db, "classrooms", id));
+        setClassrooms(classrooms.filter((cls) => cls.id !== id)); // update UI
+      } catch (error) {
+        console.error("Error deleting classroom:", error);
+      }
+    }
+  };
+
   return (
     <div className="tea-container">
       <h2 className="tea-heading">Choose Your Classroom</h2>
@@ -32,16 +43,17 @@ const Tea = () => {
       <div className="classroom-grid">
         {classrooms.length > 0 ? (
           classrooms.map((cls) => (
-            <div
-              key={cls.id}
-              className="class-card"
-              onClick={() => navigate(`/view/${cls.id}`)} // 👈 now points to /view/:id
-            >
-              <h3 className="class-subject">{cls.subject}</h3>
-              <p><strong>Professor:</strong> {cls.professorName}</p>
-              <p><strong>College:</strong> {cls.collegeName}</p>
-              <p><strong>Degree:</strong> {cls.degree}</p>
-              <p><strong>Semester:</strong> {cls.semester}</p>
+            <div key={cls.id} className="class-card">
+              <div className="class-info" onClick={() => navigate(`/view/${cls.id}`)}>
+                <h3 className="class-subject">{cls.subject}</h3>
+                <p><strong>Professor:</strong> {cls.professorName}</p>
+                <p><strong>College:</strong> {cls.collegeName}</p>
+                <p><strong>Degree:</strong> {cls.degree}</p>
+                <p><strong>Semester:</strong> {cls.semester}</p>
+              </div>
+              <div className="delete-icon" onClick={() => handleDelete(cls.id)}>
+                🗑️
+              </div>
             </div>
           ))
         ) : (
@@ -62,8 +74,3 @@ const Tea = () => {
 };
 
 export default Tea;
-
-
-
-
-

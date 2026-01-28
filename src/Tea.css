@@ -35,6 +35,10 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+
+  display: flex; /* added for delete icon positioning */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .class-card:hover {
@@ -42,6 +46,11 @@
   box-shadow: 0 6px 12px rgba(0,0,0,0.12);
 }
 
+.class-info {
+  flex: 1; /* ensures text takes up available space */
+}
+
+/* Subject & Info */
 .class-subject {
   color: #124304;
   font-size: 1.3rem;
@@ -54,6 +63,18 @@
   font-size: 1rem;
   color: #333;
   margin-bottom: 0.2rem;
+}
+
+/* Delete Icon */
+.delete-icon {
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.delete-icon:hover {
+  color: darkred;
 }
 
 /* Message if no classes */
@@ -84,4 +105,3 @@
 .create-btn:hover {
   background: #b6dbff;
 }
-
