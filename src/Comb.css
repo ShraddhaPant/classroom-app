@@ -3,6 +3,7 @@
   font-family: Arial, sans-serif;
   background: #fdfcf7; /* light cream background */
   min-height: 100vh;
+  overflow-y: auto; /* ✅ allows scrolling */
 }
 
 .comb-title {
@@ -19,6 +20,7 @@
   flex-direction: column;
   gap: 15px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 /* Class Card */
@@ -29,10 +31,17 @@
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: 1px solid #ccc;
+  background-color: #d1f5f0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* ✅ allows delete icon on right */
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .class-card:hover {
   transform: scale(1.02);
+  background-color: #bdf0ea;
 }
 
 .class-name {
@@ -58,28 +67,12 @@
   background: #a7d0f7;
 }
 
-.comb-container {
-  padding: 20px;
-  background-color: #fff8f0;
-  min-height: 100vh;
-  overflow-y: auto; /* ✅ allows scrolling */
-}
-
-.comb-list {
-  margin-top: 20px;
-}
-
-.class-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #d1f5f0;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+/* Delete Icon */
+.delete-icon {
+  background: none;
+  border: none;
+  font-size: 20px;
   cursor: pointer;
+  color: #e74c3c;
+  margin-left: 10px;
 }
-
-.class-card:hover {
-  background-color: #bdf0ea;
-}
-

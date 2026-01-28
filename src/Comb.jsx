@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./firebaseConfig";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import "./Comb.css";
 
@@ -18,14 +18,11 @@ const Comb = () => {
       }
 
       try {
-        // 1) Student’s joined classes
         const classesRef = collection(db, "students", user.uid, "classes");
         const classesSnap = await getDocs(classesRef);
 
-        // Use a Map to avoid duplicates
         const uniqueClasses = new Map();
 
-        // 2) For each joined class, try to refresh with teacher’s latest data via classCode
         for (const docSnap of classesSnap.docs) {
           const sc = docSnap.data();
           let merged = { id: docSnap.id, ...sc };
@@ -41,7 +38,6 @@ const Comb = () => {
               const tData = tDoc.data();
               merged = {
                 ...merged,
-                // teacher canonical data
                 subject: tData.subject || merged.subject || "",
                 professorName: tData.professorName || merged.professorName || "",
                 collegeName: tData.collegeName || merged.collegeName || "",
@@ -49,12 +45,11 @@ const Comb = () => {
                 semester: tData.semester || merged.semester || "",
                 link: merged.link || tData.shareLink || "",
                 classroomId: tDoc.id,
-                id: tDoc.id, // use teacher doc id for /view/:id routes
+                id: tDoc.id,
               };
             }
           }
 
-          // ✅ Deduplicate by class code
           if (merged.code) {
             uniqueClasses.set(merged.code, merged);
           }
@@ -71,6 +66,16 @@ const Comb = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleDelete = async (classId) => {
+    if (!auth.currentUser) return;
+    try {
+      await deleteDoc(doc(db, "students", auth.currentUser.uid, "classes", classId));
+      setClasses((prev) => prev.filter((cls) => cls.id !== classId));
+    } catch (err) {
+      console.error("Failed to delete class:", err);
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
 
   return (
@@ -81,31 +86,38 @@ const Comb = () => {
           <p>No classrooms joined yet.</p>
         ) : (
           classes.map((cls) => (
-            <div
-              key={cls.id}
-              className="class-card"
-              onClick={() => navigate(`/view/${cls.id}`)}
-            >
-              <h3 className="class-name">
-                {cls.subject || cls.classroom || `Class ${cls.id}`}
-              </h3>
-              <p><strong>Professor:</strong> {cls.professorName || "N/A"}</p>
-              <p><strong>College:</strong> {cls.collegeName || "N/A"}</p>
-              <p><strong>Degree:</strong> {cls.degree || "N/A"}</p>
-              <p><strong>Semester:</strong> {cls.semester || "N/A"}</p>
-              {cls.link && (
-                <p>
-                  <strong>Link:</strong>{" "}
-                  <a href={cls.link} target="_blank" rel="noreferrer">
-                    {cls.link}
-                  </a>
-                </p>
-              )}
-              {cls.code && (
-                <p>
-                  <strong>Class Code:</strong> {cls.code}
-                </p>
-              )}
+            <div key={cls.id} className="class-card">
+              <div className="class-card-content" onClick={() => navigate(`/view/${cls.id}`)}>
+                <h3 className="class-name">
+                  {cls.subject || cls.classroom || `Class ${cls.id}`}
+                </h3>
+                <p><strong>Professor:</strong> {cls.professorName || "N/A"}</p>
+                <p><strong>College:</strong> {cls.collegeName || "N/A"}</p>
+                <p><strong>Degree:</strong> {cls.degree || "N/A"}</p>
+                <p><strong>Semester:</strong> {cls.semester || "N/A"}</p>
+                {cls.link && (
+                  <p>
+                    <strong>Link:</strong>{" "}
+                    <a href={cls.link} target="_blank" rel="noreferrer">
+                      {cls.link}
+                    </a>
+                  </p>
+                )}
+                {cls.code && (
+                  <p>
+                    <strong>Class Code:</strong> {cls.code}
+                  </p>
+                )}
+              </div>
+
+              {/* Delete icon */}
+              <button
+                className="delete-icon"
+                onClick={() => handleDelete(cls.id)}
+                title="Delete class"
+              >
+                🗑️
+              </button>
             </div>
           ))
         )}
